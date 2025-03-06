@@ -58,8 +58,8 @@ session.commit()
 print(f"All companies: {session.query(Company).all()}")
 print(f"All devs: {session.query(Dev).all()}")
 print(f"All freebies: {session.query(Freebie).all()}")
-print(f"Bill Gates' freebies: {session.query(Freebie).filter(Freebie.devs.any(Dev.name=='Bill Gates')).all()}")
-print(f"Freebies for Google: {session.query(Freebie).filter(Freebie.companies.any(Company.name=='Google')).all()}")
+print(f"Bill Gates' freebies: {session.query(Freebie).join(Dev).filter(Dev.name=='Bill Gates').all()}")
+print(f"Freebies for Google: {session.query(Freebie).join(Company).filter(Company.name=='Google').all()}")
 session.close()
 
 
