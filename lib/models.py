@@ -93,8 +93,8 @@ class Freebie(Base):
     company_id=Column(Integer, ForeignKey('companies.id'))
      
      #relationship with Dev and company through freebie
-    dev=relationship('Dev',back_populates='freebies',overlaps='comapanies,devs')
-    company=relationship('Company',back_populates='freebies', overlaps='comapanies,devs')
+    dev=relationship('Dev',back_populates='freebies',overlaps='companies,devs')
+    company=relationship('Company',back_populates='freebies', overlaps='devs,companies')
 
     def __repr__(self):
      return f'<Freebie {self.item_name}>'

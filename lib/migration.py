@@ -4,7 +4,11 @@ from models import Base
 def migrate():
     engine =create_engine('sqlite:///freebies.db')
 
+    print(f"Tables before migration:{Base.metadata.tables.keys()}")
+
     Base.metadata.create_all(engine)
+
+    print(f"Tables after migration: {Base.metadata.tables.keys()}")
 
     print("Migration completed successfullly!")
 
